@@ -49,7 +49,7 @@ class Action:
         success_msg = "success" if success else "fails"
         new_msg = current_outcome_msg + f', {success_msg}' if current_outcome_msg else success_msg
         self.sheet.update_cell(self.cells['outcome'].row, self.cells['outcome'].col, new_msg)
-        time.sleep(5)
+        time.sleep(2)
         self.cells['outcome'].value = new_msg
 
     def hijacked(self, redirected: Action):
@@ -61,7 +61,7 @@ class Action:
             new_msg = f'redirected to {redirected.target}'
         self.sheet.update_cell(self.cells['outcome'].row, self.cells['outcome'].col, new_msg)
         self.sheet.update_cell(self.cells['final target'].row, self.cells['final target'].col, redirected.target)
-        time.sleep(5)
+        time.sleep(2)
         self.cells['outcome'].value = new_msg
         self.cells['final target'].value = redirected.target
 
@@ -73,13 +73,13 @@ class Action:
         else:
             new_msg = "delayed"
         self.sheet.update_cell(self.cells['outcome'].row, self.cells['outcome'].col, new_msg)
-        time.sleep(5)
+        time.sleep(2)
         self.cells['outcome'].value = new_msg
 
     def empowered(self):
         self.modifiers['empowered'] = True
         self.sheet.update_cell(self.cells['outcome'].row, self.cells['outcome'].col, 'strongwill')
-        time.sleep(5)
+        time.sleep(2)
         self.cells['outcome'].value = 'strongwill'
 
     def add_message(self, msg: str):
@@ -89,14 +89,14 @@ class Action:
         else:
             new_msg = msg
         self.sheet.update_cell(self.cells['outcome'].row, self.cells['outcome'].col, new_msg)
-        time.sleep(5)
+        time.sleep(2)
         self.cells['outcome'].value = new_msg
 
     def update_cell(self, label: str, value: int):
         current_value = int(self.cells[label].value) if self.cells[label].value else 0
         new_value = current_value + value
         self.sheet.update_cell(self.cells[label].row, self.cells[label].col, new_value)
-        time.sleep(5)
+        time.sleep(2)
         self.cells[label].value = new_value
 
     @staticmethod
