@@ -16,7 +16,7 @@ def get_mt_value(action_desc: str):
 
 
 def state_after_disruptive(outcome_value: str):
-    success = False if re.search('fail|block', outcome_value) is not None else None
+    success = False if re.search('fail|block|delay', outcome_value) is not None else None
     empowered = True if re.search('strongwill', outcome_value) is not None else False
     return success, empowered
 
